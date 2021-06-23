@@ -119,15 +119,15 @@ int main() {
 
 
     // function
-    const int pointsQuantity = 5000;
-    float x = 0.1f, y = 0.1f, z = 0.1f, dt = 0.01f; //change start point
+    const int pointsQuantity = 5000; // how many points will be printed
+    float x = 0.1f, y = 0.1f, z = 0.1f, dt = 0.01f; // start point
     int verticesBufferSize = 3 * pointsQuantity * sizeof(float);
     float* vertices = (float*)malloc(verticesBufferSize);
     for (int i = 0; i < pointsQuantity; i++) {
         vertices[i * 3 + 0] = (float)x;
         vertices[i * 3 + 1] = (float)y;
         vertices[i * 3 + 2] = (float)z;
-        lorentzAttractor(x,y,z,dt);  //change function
+        lorentzAttractor(x,y,z,dt);  // it could be a custom function
     }
 
     unsigned int VBO1, VAO1;
@@ -179,8 +179,7 @@ int main() {
         // render boxes
         glBindVertexArray(VAO1);
         functionShader.setVec3("color", glm::vec3(1.0f, 1.0f, 0.0f));
-        //glDrawArrays(GL_LINE_STRIP, 0, pointsQuantity); // use GL_LINE_STRIP to print lines or GL_POINTS to print points
-        glDrawArrays(GL_POINTS, 0, pointsQuantity);
+        glDrawArrays(GL_POINTS, 0, pointsQuantity); // use GL_LINE_STRIP to print lines or GL_POINTS to print points
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
